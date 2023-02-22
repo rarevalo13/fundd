@@ -1,0 +1,16 @@
+const iso8601TimeFormat = "2006-01-02"
+startDate := time.Now().Add(-365 * 24 * time.Hour).Format(iso8601TimeFormat)
+endDate := time.Now().Format(iso8601TimeFormat)
+transactionsResp, err := client.GetTransactions(accessToken, startDate, endDate)
+
+// Or, using optional parameters:
+startDate := time.Now().Add(-365 * 24 * time.Hour).Format(iso8601TimeFormat)
+endDate := time.Now().Format(iso8601TimeFormat)
+options := GetTransactionsOptions{
+  StartDate:  startDate,
+  EndDate:    endDate,
+  AccountIDs: []string{},
+  Count:      2,
+  Offset:     1,
+}
+transactionsResp, err := client.GetTransactionsWithOptions(accessToken, options)
